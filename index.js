@@ -10,6 +10,14 @@ app.use(express.json())
 app.use("/users",userRoute)
 app.use("/notes",noteRoute)
 
+app.get("/",(req,res)=>{
+    try {
+        res.json({msg:"home page"})
+    } catch (error) {
+        res.json({msg:error})
+    }
+})
+
 app.listen(process.env.port,async()=>{
     try {
         await connection
@@ -18,6 +26,7 @@ app.listen(process.env.port,async()=>{
         console.log(error)
     }
 })
+
 
 
 
